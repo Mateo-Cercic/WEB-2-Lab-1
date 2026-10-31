@@ -9,7 +9,7 @@ async function main(): Promise<void> {
   const clientSecret = process.env.M2M_CLIENT_SECRET!;
   const scope = "create:passes";
 
-  // Dohvati pristupni token
+  // dohvati  token
   const token = await getToken(
     authority,
     audience,

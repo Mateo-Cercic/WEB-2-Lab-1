@@ -10,7 +10,6 @@ export async function getToken(
   // Ukloni "/" na kraju 
   const base = authority.replace(/\/+$/, "");
 
-  // OAuth2 client_credentials zahtjev šalje se kao form-urlencoded tijelo
   const body = new URLSearchParams({
     grant_type: "client_credentials",
     client_id: clientId,
@@ -38,6 +37,7 @@ export async function getToken(
   return data.access_token;
 }
 
+
 export async function issuePass(
   url: string,
   token: string,
@@ -57,7 +57,6 @@ export async function issuePass(
     throw new Error(`Izdavanje propusnice nije uspjelo, status: ${response.status}`);
   }
 
-  // Identifikator propusnice je zadnji dio putanje u zaglavlju Location
   const location = response.headers.get("Location");
   if (!location) {
     throw new Error("Odgovor ne sadrži zaglavlje Location");
